@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>2022.6.15.0</Version>
+		<Description>An easy way to interact with IndexedDB and make it feel like EF Core but `async`</Description>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ApplicationIcon>favion.ico</ApplicationIcon>
+		<BaseOutputPath>bin\pack</BaseOutputPath>
+		<PackageProjectUrl>http://www.udx.com.cn</PackageProjectUrl>
+		<Copyright>udx.com.cn</Copyright>
+		<PackageIcon>udx128.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>udx</PackageTags>
+		<SignAssembly>False</SignAssembly>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+	  <Content Include="favion.ico" />
+		<Content Include="udx128.png" />
+		<Content Include="README.md" />
+
+	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TG.Blazor.IndexedDB" Version="1.5.0-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="udx128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+	  <None Update="favion.ico">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="README.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,61 @@
+﻿@page "/"
+
+@inject IIndexedDbFactory DbFactory
+
+<button @onclick="@(args => Create(args))">Add</button>
+<button @onclick="@(args => Search(args))">Search</button>
+<table>
+    @if(listPeople!=null){
+        foreach (var item in listPeople)
+        {
+            <tr><td>@item.FirstName</td><td>@item.LastName</td><td>@item.Dog.Id  @item.Dog.Name</td></tr>
+        }
+
+}
+</table>
+
+@code{
+    IEnumerable<Person> listPeople;
+    protected async Task Create(MouseEventArgs e)
+    {
+        using (var db = await this.DbFactory.Create<ExampleDb>())
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var p = new Person()
+                    {
+                        FirstName = Guid.NewGuid().ToString(),
+                        LastName = Guid.NewGuid().ToString(),
+                        DogId = i,
+                        Dog = new Dog
+                        {
+                            Id = i,
+                            Name = $"dog {i}"
+                        }
+
+                    };
+                db.People.Add(p);
+                db.Dog.Add(p.Dog);
+
+            }
+            await db.SaveChanges();
+        }
+    }
+    protected async Task Search(MouseEventArgs e)
+    {
+        using (var db = await this.DbFactory.Create<ExampleDb>())
+        {
+            listPeople = from p in db.People
+                         join d in db.Dog on p.DogId equals d.Id
+                         where d.Name.Contains("dog")
+                         select new Person
+                             {
+                                 Id = p.Id,
+                                 FirstName = p.FirstName,
+                                 LastName = p.LastName,
+                                 DogId = p.DogId,
+                                 Dog = d
+                             };
+        }
+    }
+}
