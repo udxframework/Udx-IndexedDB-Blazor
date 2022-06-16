@@ -16,7 +16,6 @@ Either install it from command line:
 PM> Install-Package Udx.IndexedDB.Blazor
 ```
 
-
 ## Features
 - Connect and create database
 - Add record
