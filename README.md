@@ -4,6 +4,10 @@
 
 An easy way to interact with IndexedDB and make it feel like EF Core but `async`.
 
+#GitHub repository
+
+The GitHub repository is at: https://github.com/udxframework/Udx-IndexedDB-Blazor
+
 ## NuGet installation
 The NuGet package is at: https://www.nuget.org/packages/Udx.IndexedDB.Blazor
 
@@ -139,7 +143,6 @@ using (var db = await this.DbFactory.Create<ExampleDb>())
 ```
 
 ## License
-Original [license](https://github.com/Jinjinov/IndexedDB.Blazor/blob/master/LICENSE).
 Original [license](https://github.com/wtulloch/Blazor.IndexedDB/blob/master/LICENSE).
 
 ## Site
